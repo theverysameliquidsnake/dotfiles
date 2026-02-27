@@ -30,3 +30,5 @@ My [Arch Linux](https://archlinux.org) setup
   - [Noto Fonts](https://archlinux.org/packages/extra/any/noto-fonts) (for fallback)
 * Utils:
   - [btop](https://archlinux.org/packages/extra/x86_64/btop)
+
+## Installation
