@@ -35,6 +35,9 @@ My [Arch Linux](https://archlinux.org) setup
   - [Noto Fonts CJK](https://wiki.archlinux.org/title/Fonts)
   - [KanjiStrokeOrders](https://www.nihilist.org.uk)
   - [Noto Fonts](https://wiki.archlinux.org/title/Fonts)
+* Input:
+  - [fcitx5](https://wiki.archlinux.org/title/Fcitx5)
+  - [mozc](https://wiki.archlinux.org/title/Localization/Japanese)
 * Blue filter:
   - [sunsetr](https://github.com/psi4j/sunsetr)
 * AUR helper:
@@ -50,6 +53,13 @@ My [Arch Linux](https://archlinux.org) setup
   - [yaak](https://github.com/mountain-loop/yaak)
 
 ## Installation
+
+### IMF/IME
+
+```Zsh
+# Install fcitx5 and mozc
+pacman -S fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-mozc
+```
 
 ### Snapper
 
