@@ -10,8 +10,6 @@ My [Arch Linux](https://archlinux.org) setup
   - [zsh](https://archlinux.org/packages/extra/x86_64/zsh)
 * Terminal:
   - [kitty](https://archlinux.org/packages/extra/x86_64/kitty)
-* File manager:
-  - [lf](https://archlinux.org/packages/extra/x86_64/lf)
 * Display manager:
   - [ly](https://archlinux.org/packages/extra/x86_64/ly)
 * Window manager:
@@ -20,6 +18,12 @@ My [Arch Linux](https://archlinux.org) setup
   - [wofi](https://archlinux.org/packages/extra/x86_64/wofi)
 * Notifications:
   - [mako](https://archlinux.org/packages/extra/x86_64/mako)
+* File managers:
+  - [lf](https://archlinux.org/packages/extra/x86_64/lf)
+  - [thunar](https://archlinux.org/packages/extra/x86_64/thunar)
+* Text editors:
+  - [Neovim](https://archlinux.org/packages/extra/x86_64/neovim)
+  - [VS Code](https://aur.archlinux.org/packages/visual-studio-code-bin)
 * Fonts:
   - [Fira Sans](https://archlinux.org/packages/extra/any/ttf-fira-sans)
   - [FiraCode Nerd](https://archlinux.org/packages/extra/any/ttf-firacode-nerd)
@@ -27,7 +31,9 @@ My [Arch Linux](https://archlinux.org) setup
   - [Noto Fonts Emoji](https://archlinux.org/packages/extra/any/noto-fonts-emoji)
   - [Noto Fonts CJK](https://archlinux.org/packages/extra/any/noto-fonts-cjk)
   - [KanjiStrokeOrders](https://aur.archlinux.org/packages/ttf-kanjistrokeorders)
-  - [Noto Fonts](https://archlinux.org/packages/extra/any/noto-fonts) (for fallback)
+  - [Noto Fonts](https://archlinux.org/packages/extra/any/noto-fonts)
+* Blue filter:
+  - [sunsetr](https://aur.archlinux.org/packages/sunsetr-bin)
 * Utils:
   - [btop](https://archlinux.org/packages/extra/x86_64/btop)
 
