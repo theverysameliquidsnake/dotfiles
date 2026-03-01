@@ -5,36 +5,97 @@ My [Arch Linux](https://archlinux.org) setup
 ## Packages used
 
 * Kernel:
-  - [linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen)
+  - [linux-zen](https://wiki.archlinux.org/title/Kernel)
 * Shell:
-  - [zsh](https://archlinux.org/packages/extra/x86_64/zsh)
+  - [zsh](https://wiki.archlinux.org/title/Zsh)
 * Terminal:
-  - [kitty](https://archlinux.org/packages/extra/x86_64/kitty)
+  - [kitty](https://wiki.archlinux.org/title/Kitty)
 * Display manager:
-  - [ly](https://archlinux.org/packages/extra/x86_64/ly)
+  - [ly](https://wiki.archlinux.org/title/Ly)
 * Window manager:
-  - [hyprland](https://archlinux.org/packages/extra/x86_64/hyprland)
+  - [hyprland](https://wiki.archlinux.org/title/Hyprland)
 * Launcher:
-  - [wofi](https://archlinux.org/packages/extra/x86_64/wofi)
+  - [wofi](https://hg.sr.ht/~scoopta/wofi)
 * Notifications:
-  - [mako](https://archlinux.org/packages/extra/x86_64/mako)
+  - [mako](https://github.com/emersion/mako)
 * File managers:
-  - [lf](https://archlinux.org/packages/extra/x86_64/lf)
-  - [thunar](https://archlinux.org/packages/extra/x86_64/thunar)
+  - [lf](https://wiki.archlinux.org/title/Lf)
+  - [thunar](https://wiki.archlinux.org/title/Thunar)
 * Text editors:
-  - [Neovim](https://archlinux.org/packages/extra/x86_64/neovim)
-  - [VS Code](https://aur.archlinux.org/packages/visual-studio-code-bin)
+  - [Neovim](https://wiki.archlinux.org/title/Neovim)
+  - [VS Code](https://wiki.archlinux.org/title/Visual_Studio_Code)
+* Browsers:
+  - [Firefox](https://wiki.archlinux.org/title/Firefox)
+  - [Brave](https://aur.archlinux.org/packages/brave-bin)
 * Fonts:
-  - [Fira Sans](https://archlinux.org/packages/extra/any/ttf-fira-sans)
-  - [FiraCode Nerd](https://archlinux.org/packages/extra/any/ttf-firacode-nerd)
-  - [Liberation](https://archlinux.org/packages/extra/any/ttf-liberation)
-  - [Noto Fonts Emoji](https://archlinux.org/packages/extra/any/noto-fonts-emoji)
-  - [Noto Fonts CJK](https://archlinux.org/packages/extra/any/noto-fonts-cjk)
-  - [KanjiStrokeOrders](https://aur.archlinux.org/packages/ttf-kanjistrokeorders)
-  - [Noto Fonts](https://archlinux.org/packages/extra/any/noto-fonts)
+  - [Fira Sans](https://wiki.archlinux.org/title/Fonts)
+  - [FiraCode Nerd](https://wiki.archlinux.org/title/Fonts)
+  - [Liberation](https://wiki.archlinux.org/title/Fonts)
+  - [Noto Fonts Emoji](https://wiki.archlinux.org/title/Fonts)
+  - [Noto Fonts CJK](https://wiki.archlinux.org/title/Fonts)
+  - [KanjiStrokeOrders](https://www.nihilist.org.uk)
+  - [Noto Fonts](https://wiki.archlinux.org/title/Fonts)
 * Blue filter:
-  - [sunsetr](https://aur.archlinux.org/packages/sunsetr-bin)
-* Utils:
-  - [btop](https://archlinux.org/packages/extra/x86_64/btop)
+  - [sunsetr](https://github.com/psi4j/sunsetr)
+* AUR helper:
+  - [yay](https://wiki.archlinux.org/title/AUR_helpers)
+* Flatpak:
+  - [flatpak](https://wiki.archlinux.org/title/Flatpak)
+  - [flatseal](https://wiki.archlinux.org/title/Flatpak)
+  - [Bottles](https://usebottles.com/)
+  - [Fightcade](https://www.fightcade.com)
+* Other:
+  - [anki](https://github.com/ankitects/anki)
+  - [btop](https://github.com/aristocratos/btop)
+  - [yaak](https://github.com/mountain-loop/yaak)
 
 ## Installation
+
+### Snapper
+
+```
+# Install cronie and snapper
+pacman -S cronie snapper
+
+# Create snapper config file for root volume
+snapper -c root create-config /
+
+# Edit snapshot numbers:
+# TIMELINE_MIN_AGE="1800"
+# TIMELINE_LIMIT_HOURLY="5"
+# TIMELINE_LIMIT_DAILY="7"
+# TIMELINE_LIMIT_WEEKLY="0"
+# TIMELINE_LIMIT_MONTHLY="0"
+# TIMELINE_LIMIT_YEARLY="0"
+nvim /etc/snapper/configs/root
+
+# Start cron service
+systemctl enable cronie.service
+```
+
+### AUR
+
+>Run from main account
+
+```
+# Install yay
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Install packages from AUR
+yay -S ttf-kanjistrokeorders sunsetr anki yaak visual-studio-code-bin brave-bin
+```
+
+### Flatpak
+
+>Run from main account
+```
+# Install flatpak and flatseal
+sudo pacman -S flatpak flatseal
+
+# Install bottles and fightcade
+flatpak install flathub com.usebottles.bottles
+flatpak install flathub com.fightcade.Fightcade
+```
