@@ -53,7 +53,7 @@ My [Arch Linux](https://archlinux.org) setup
 
 ### Snapper
 
-```
+```Zsh
 # Install cronie and snapper
 pacman -S cronie snapper
 
@@ -76,7 +76,7 @@ systemctl enable cronie.service
 ### AUR
 
 >Run from main account
-```
+```Zsh
 # Install yay
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay.git
@@ -90,7 +90,7 @@ yay -S ttf-kanjistrokeorders sunsetr anki yaak visual-studio-code-bin brave-bin
 ### Flatpak
 
 >Run from main account
-```
+```Zsh
 # Install flatpak and flatseal
 sudo pacman -S flatpak flatseal
 
