@@ -48,7 +48,7 @@ My [Arch Linux](https://archlinux.org) setup
   - [Bottles](https://usebottles.com/)
   - [Fightcade](https://www.fightcade.com)
 * Other:
-  - [anki](https://github.com/ankitects/anki)
+  - [anki](https://wiki.archlinux.org/title/Anki)
   - [btop](https://github.com/aristocratos/btop)
   - [yaak](https://github.com/mountain-loop/yaak)
 
@@ -94,7 +94,7 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S ttf-kanjistrokeorders sunsetr anki yaak visual-studio-code-bin brave-bin
+yay -S ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin
 ```
 
 ### Flatpak
