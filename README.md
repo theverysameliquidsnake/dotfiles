@@ -76,7 +76,6 @@ systemctl enable cronie.service
 ### AUR
 
 >Run from main account
-
 ```
 # Install yay
 sudo pacman -S --needed base-devel git
