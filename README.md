@@ -56,7 +56,7 @@ My [Arch Linux](https://archlinux.org) setup
 
 ## Installation
 
-## Pre
+### Pre
 
 ```Zsh
 # Set terminal layout
@@ -65,11 +65,43 @@ loadkeys us
 # Verify boot mode (64)
 cat /sys/firmware/efi/fw_platform_size
 
-# Connect to the internet using cable or wi-fi with iwctl util
+# Connect to the internet using cable or wi-fi with iwctl
 iwctl
 
 # Update clock
+timedatectl list-timezones
+timedatectl set-timezone <timezone>
+timedatectl set-ntp true
 timedatectl
+```
+
+### Disk
+
+```Zsh
+# Make sure disk in GPT mode
+fdisk -l /dev/nvme0n1
+
+# Create 2 partitions using cfdisk
+# nvme0n1p1 / 512Mb / EFI System
+# nvme0n1p2 / remaining space / Linux root x86-64
+cfdisk /dev/nvme0n1
+
+# Format partitions
+mkfs.btrfs /dev/nvme0n1p2
+mkfs.fat -F 32 /dev/nvme0n1p1
+
+# Create subvolumes
+mount /dev/nvme0n1p2 /mnt
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+umount /mnt
+
+# Mount partitions
+mount -o noatime,ssd,compress=zstd,space_cache=v2,discard=async,subvol=@ /dev/nvme0n1p2 /mnt
+mkdir /mnt/home
+mount -o noatime,ssd,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/nvme0n1p2 /mnt/home
+mkdir -p /mnt/boot/efi
+mount /dev/nvme0n1p1 /mnt/boot/efi
 ```
 
 ### IMF/IME
