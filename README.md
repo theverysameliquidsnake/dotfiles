@@ -55,6 +55,7 @@ My [Arch Linux](https://archlinux.org) setup
   - [anki](https://wiki.archlinux.org/title/Anki)
   - [btop](https://github.com/aristocratos/btop)
   - [yaak](https://github.com/mountain-loop/yaak)
+  - [zram](https://wiki.archlinux.org/title/Zram)
 
 ## Installation
 
@@ -236,6 +237,20 @@ systemctl enable bluetooth
 systemctl enable acpid
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
+```
+
+### Swap
+
+```Zsh
+# Install zram
+pacman -S zram-generator
+
+# Create config:
+# [zram0]
+# zram-size = 4096
+# compression-algorithm = zstd
+touch /etc/systemd/zram-generator.conf
+nvim /etc/systemd/zram-generator.conf
 ```
 
 ### IMF/IME
