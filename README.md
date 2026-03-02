@@ -6,6 +6,8 @@ My [Arch Linux](https://archlinux.org) setup
 
 * Kernel:
   - [linux-zen](https://wiki.archlinux.org/title/Kernel)
+* Bootloader:
+  - [GRUB](https://wiki.archlinux.org/title/GRUB)
 * File system:
   - [btrfs](https://wiki.archlinux.org/title/Btrfs)
 * Shell:
@@ -102,6 +104,127 @@ mkdir /mnt/home
 mount -o noatime,ssd,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/nvme0n1p2 /mnt/home
 mkdir -p /mnt/boot/efi
 mount /dev/nvme0n1p1 /mnt/boot/efi
+```
+
+### Core
+
+```Zsh
+# Update mirrors
+reflector -c <country> -a 12 --sort rate --save /etc/pacman.d/mirrorlist
+
+# Core packages
+pacstrap -K /mnt base linux-zen linux-zen-headers dkms linux-firmware intel-ucode neovim
+```
+
+### Fstab
+
+```Zsh
+# Generate fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab
+```
+
+### Chroot
+
+```Zsh
+# Chroot into system
+arch-chroot /mnt
+```
+
+### Time
+
+```Zsh
+# Set local time zone
+ln -sf /usr/share/zoneinfo/<Area>/<Location> /etc/localtime
+
+# Sync clock
+hwclock --systohc
+```
+
+### Lang
+
+```Zsh
+# Uncomment required locales
+nvim /etc/locale.gen
+
+# Generate locales
+locale-gen
+
+# Create and edit locale conf:
+# LANG=en_US.UTF-8
+# LC_TIME=en_GB.UTF-8
+touch /etc/locale.conf
+nvim /etc/locale.conf
+```
+
+### Hostname
+
+```Zsh
+# Create hostname
+echo "<hostname>" >> /etc/hostname
+```
+
+### User
+
+```Zsh
+# Create root password
+passwd
+
+# Create user
+useradd -m -g users -G wheel <username>
+passwd <username>
+
+# Add user to sudo group
+echo "<username> ALL=(ALL) ALL" >> /etc/sudoers.d/<username>
+```
+
+### Packages
+
+```Zsh
+# Network
+pacman -S networkmanager reflector openssh
+
+# Bluetooth
+pacman -S bluez bluez-utils
+
+# Audio
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+
+# Man pages
+pacman -S man-db man-pages texinfo
+
+# Other
+pacman -S sudo git btrfs-progs base-devel
+```
+
+### Mkinitcpio
+
+```Zsh
+# Edit /etc/mkinitcpio.conf:
+# MODULES=(btrfs)
+nvim /etc/mkinitcpio.conf
+
+# Rebuid
+mkinitcpio -P
+```
+
+### Bootloader
+
+```Zsh
+# Install grub
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### Firewall
+
+```Zsh
+# Minimal firewall config
+pacman -S ufw
+ufw default deny incoming
+ufw default allow outgoing
+ufw enable
+systemctl enable ufw
 ```
 
 ### IMF/IME
