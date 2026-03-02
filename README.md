@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles (WIP)
 
 My [Arch Linux](https://archlinux.org) setup
 
