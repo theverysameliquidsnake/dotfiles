@@ -193,7 +193,7 @@ pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S sudo git btrfs-progs base-devel
+pacman -S sudo git btrfs-progs base-devel acpi
 ```
 
 ### Mkinitcpio
@@ -225,6 +225,17 @@ ufw default deny incoming
 ufw default allow outgoing
 ufw enable
 systemctl enable ufw
+```
+
+### Services
+
+```Zsh
+# Enable core services
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable acpid
+systemctl enable reflector.timer
+systemctl enable fstrim.timer
 ```
 
 ### IMF/IME
