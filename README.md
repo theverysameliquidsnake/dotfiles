@@ -6,6 +6,8 @@ My [Arch Linux](https://archlinux.org) setup
 
 * Kernel:
   - [linux-zen](https://wiki.archlinux.org/title/Kernel)
+* File system:
+  - [btrfs](https://wiki.archlinux.org/title/Btrfs)
 * Shell:
   - [zsh](https://wiki.archlinux.org/title/Zsh)
 * Terminal:
@@ -53,6 +55,22 @@ My [Arch Linux](https://archlinux.org) setup
   - [yaak](https://github.com/mountain-loop/yaak)
 
 ## Installation
+
+## Pre
+
+```Zsh
+# Set terminal layout
+loadkeys us
+
+# Verify boot mode (64)
+cat /sys/firmware/efi/fw_platform_size
+
+# Connect to the internet using cable or wi-fi with iwctl util
+iwctl
+
+# Update clock
+timedatectl
+```
 
 ### IMF/IME
 
