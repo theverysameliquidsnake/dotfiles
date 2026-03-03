@@ -218,7 +218,7 @@ pacman -S tlp tlp-rdw
 pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
 
 # Other
-pacman -S sudo git btrfs-progs base-devel acpi
+pacman -S sudo git btrfs-progs base-devel
 ```
 
 ### Mkinitcpio
