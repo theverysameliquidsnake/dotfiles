@@ -218,7 +218,7 @@ pacman -S tlp tlp-rdw
 pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
 
 # Other
-pacman -S sudo git btrfs-progs base-devel
+pacman -S sudo btrfs-progs xdg-user-dirs
 ```
 
 ### Mkinitcpio
@@ -334,4 +334,12 @@ sudo pacman -S flatpak flatseal
 # Install bottles and fightcade
 flatpak install flathub com.usebottles.bottles
 flatpak install flathub com.fightcade.Fightcade
+```
+
+### Misc
+
+>Run from main account
+```Zsh
+# Create standard folders
+xdg-user-dirs-update
 ```
