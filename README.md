@@ -236,6 +236,9 @@ pacman -S tlp tlp-rdw
 # Graphics
 pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
 
+#Fonts
+pacman -S ttf-fira-sans ttf-firacode-nerd ttf-liberation noto-fonts　noto-fonts-emoji noto-fonts-cjk
+
 # Browser
 pacman -S firefox
 
