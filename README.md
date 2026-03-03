@@ -14,9 +14,11 @@ My [Arch Linux](https://archlinux.org) setup
   - [zsh](https://wiki.archlinux.org/title/Zsh)
 * Terminal:
   - [kitty](https://wiki.archlinux.org/title/Kitty)
+* Bar:
+  - [waybar](https://github.com/Alexays/Waybar)
 * Display manager:
   - [ly](https://wiki.archlinux.org/title/Ly)
-* Window manager:
+* Compositor / Window Manager:
   - [hyprland](https://wiki.archlinux.org/title/Hyprland)
 * Launcher:
   - [wofi](https://hg.sr.ht/~scoopta/wofi)
@@ -28,9 +30,22 @@ My [Arch Linux](https://archlinux.org) setup
 * Text editors:
   - [Neovim](https://wiki.archlinux.org/title/Neovim)
   - [VS Code](https://wiki.archlinux.org/title/Visual_Studio_Code)
+* Dev:
+  - [go](https://wiki.archlinux.org/title/Go)
+  - [node.js](https://wiki.archlinux.org/title/Node.js)
+  - [npm](https://wiki.archlinux.org/title/Node.js)
+  - [podman](https://wiki.archlinux.org/title/Podman)
 * Browsers:
   - [Firefox](https://wiki.archlinux.org/title/Firefox)
   - [Brave](https://aur.archlinux.org/packages/brave-bin)
+* Media:
+  - [mpv](https://wiki.archlinux.org/title/Mpv)
+  - [nicotine+](https://github.com/Nicotine-Plus/nicotine-plus)
+* Games:
+  - [Steam](https://wiki.archlinux.org/title/Steam)
+* Messengers:
+  - [telegram](https://wiki.archlinux.org/title/Telegram)
+  - [vesktop](https://wiki.archlinux.org/title/Discord)
 * Fonts:
   - [Fira Sans](https://wiki.archlinux.org/title/Fonts)
   - [FiraCode Nerd](https://wiki.archlinux.org/title/Fonts)
@@ -49,14 +64,18 @@ My [Arch Linux](https://archlinux.org) setup
 * Flatpak:
   - [flatpak](https://wiki.archlinux.org/title/Flatpak)
   - [flatseal](https://wiki.archlinux.org/title/Flatpak)
-  - [Bottles](https://usebottles.com/)
-  - [Fightcade](https://www.fightcade.com)
+  - [Bottles](https://usebottles.com)
 * Other:
   - [anki](https://wiki.archlinux.org/title/Anki)
   - [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)
   - [btop](https://github.com/aristocratos/btop)
   - [intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  - [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)
+  - [qBittorrent](https://wiki.archlinux.org/title/QBittorrent)
+  - [reflector](https://wiki.archlinux.org/title/Reflector)
+  - [snapper](https://wiki.archlinux.org/title/Snapper)
   - [thermald](https://wiki.archlinux.org/title/CPU_frequency_scaling)
+  - [ufw](https://wiki.archlinux.org/title/Uncomplicated_Firewall)
   - [yaak](https://github.com/mountain-loop/yaak)
   - [zram](https://wiki.archlinux.org/title/Zram)
 
@@ -196,6 +215,9 @@ echo "<username> ALL=(ALL) ALL" >> /etc/sudoers.d/<username>
 ### Packages
 
 ```Zsh
+# Shell
+pacman -S zsh zsh-completions
+
 # Network
 pacman -S networkmanager reflector openssh
 
@@ -204,9 +226,6 @@ pacman -S bluez bluez-utils
 
 # Audio
 pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
-
-# Man pages
-pacman -S man-db man-pages texinfo
 
 # Power
 pacman -S acpi acpid thermald
@@ -217,8 +236,29 @@ pacman -S tlp tlp-rdw
 # Graphics
 pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
 
+# Browser
+pacman -S firefox
+
+# File managers
+pacman -S lf thunar
+
+# Media
+pacman -S mpv nicotine+
+
+# Messenger
+pacman -S telegram
+
+# Dev
+pacman -S go nodejs npm podman
+
+# Games
+pacman -S steam
+
+# Man pages
+pacman -S man-db man-pages texinfo
+
 # Other
-pacman -S sudo btrfs-progs xdg-user-dirs
+pacman -S sudo btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks
 ```
 
 ### Mkinitcpio
@@ -264,6 +304,17 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 ```
 
+### GUI
+
+```Zsh
+# Display manager
+pacman -S ly
+systemctl enable ly
+
+# Compositor
+pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper hyprshot qt5-wayland qt6-wayland
+```
+
 ### Swap
 
 ```Zsh
@@ -289,7 +340,7 @@ pacman -S fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-mozc
 
 ```Zsh
 # Install cronie and snapper
-pacman -S cronie snapper
+pacman -S snapper
 
 # Create snapper config file for root volume
 snapper -c root create-config /
@@ -303,8 +354,9 @@ snapper -c root create-config /
 # TIMELINE_LIMIT_YEARLY="0"
 nvim /etc/snapper/configs/root
 
-# Start cron service
-systemctl enable cronie.service
+# Start services
+systemctl enable snapper-timeline.timer
+systemctl enable snapper-cleanup.timer
 ```
 
 ### AUR
@@ -318,7 +370,7 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin
+yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin vesktop
 
 # Enable cpufreq
 sudo systemctl enable auto-cpufreq
