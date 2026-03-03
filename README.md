@@ -359,6 +359,22 @@ systemctl enable snapper-timeline.timer
 systemctl enable snapper-cleanup.timer
 ```
 
+### Exit chroot
+
+```Zsh
+# Exit from chroot
+exit
+
+# Unmount all
+umount -R /mnt
+
+# Reboot into main account
+reboot
+
+# Misc
+timedatectl set-ntp true
+```
+
 ### AUR
 
 >Run from main account
