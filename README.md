@@ -53,7 +53,10 @@ My [Arch Linux](https://archlinux.org) setup
   - [Fightcade](https://www.fightcade.com)
 * Other:
   - [anki](https://wiki.archlinux.org/title/Anki)
+  - [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)
   - [btop](https://github.com/aristocratos/btop)
+  - [intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  - [thermald](https://wiki.archlinux.org/title/CPU_frequency_scaling)
   - [yaak](https://github.com/mountain-loop/yaak)
   - [zram](https://wiki.archlinux.org/title/Zram)
 
@@ -164,6 +167,18 @@ nvim /etc/locale.conf
 echo "<hostname>" >> /etc/hostname
 ```
 
+### Multilib
+
+```Zsh
+# Uncomment in etc/pacman.conf:
+# [multilib]
+# Include = /etc/pacman.d/mirrorlist
+nvim etc/pacman.conf
+
+# Update system
+pacman -Syu
+```
+
 ### User
 
 ```Zsh
@@ -192,6 +207,15 @@ pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
 
 # Man pages
 pacman -S man-db man-pages texinfo
+
+# Power
+pacman -S acpi acpid thermald
+
+# Power (optional and probably conflict if configured wrong)
+pacman -S tlp tlp-rdw
+
+# Graphics
+pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
 
 # Other
 pacman -S sudo git btrfs-progs base-devel acpi
@@ -235,6 +259,7 @@ systemctl enable ufw
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable acpid
+systemctl enable thermald
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 ```
@@ -293,7 +318,10 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin
+yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin
+
+# Enable cpufreq
+sudo systemctl enable auto-cpufreq
 ```
 
 ### Flatpak
