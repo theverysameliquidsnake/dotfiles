@@ -375,7 +375,10 @@ umount -R /mnt
 reboot
 
 # Misc
-timedatectl set-ntp true
+sudo timedatectl set-ntp true
+
+# Create standard folders
+xdg-user-dirs-update
 ```
 
 ### AUR
@@ -405,12 +408,4 @@ sudo pacman -S flatpak flatseal
 # Install bottles and fightcade
 flatpak install flathub com.usebottles.bottles
 flatpak install flathub com.fightcade.Fightcade
-```
-
-### Misc
-
->Run from main account
-```Zsh
-# Create standard folders
-xdg-user-dirs-update
 ```
