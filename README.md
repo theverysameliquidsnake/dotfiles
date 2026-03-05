@@ -25,7 +25,7 @@ My [Arch Linux](https://archlinux.org) setup
 * Notifications:
   - [mako](https://github.com/emersion/mako)
 * File managers:
-  - [lf](https://wiki.archlinux.org/title/Lf)
+  - [yazi](https://github.com/sxyazi/yazi)
   - [thunar](https://wiki.archlinux.org/title/Thunar)
 * Text editors:
   - [Neovim](https://wiki.archlinux.org/title/Neovim)
@@ -243,7 +243,7 @@ pacman -S ttf-fira-sans ttf-firacode-nerd ttf-liberation noto-fonts　noto-fonts
 pacman -S firefox
 
 # File managers
-pacman -S lf thunar
+pacman -S yazi thunar
 
 # Media
 pacman -S mpv nicotine+
