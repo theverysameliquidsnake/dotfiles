@@ -25,7 +25,7 @@ My [Arch Linux](https://archlinux.org) setup
 * Notifications:
   - [mako](https://github.com/emersion/mako)
 * File managers:
-  - [yazi](https://github.com/sxyazi/yazi)
+  - [lf](https://wiki.archlinux.org/title/Lf)
   - [thunar](https://wiki.archlinux.org/title/Thunar)
 * Text editors:
   - [Neovim](https://wiki.archlinux.org/title/Neovim)
