@@ -12,6 +12,7 @@ My [Arch Linux](https://archlinux.org) setup
   - [btrfs](https://wiki.archlinux.org/title/Btrfs)
 * Shell:
   - [zsh](https://wiki.archlinux.org/title/Zsh)
+  - [starship](https://starship.rs)
 * Terminal:
   - [kitty](https://wiki.archlinux.org/title/Kitty)
 * Bar:
@@ -216,7 +217,7 @@ echo "<username> ALL=(ALL) ALL" >> /etc/sudoers.d/<username>
 
 ```Zsh
 # Shell
-pacman -S zsh zsh-completions
+pacman -S zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions starship
 
 # Network
 pacman -S networkmanager reflector openssh
