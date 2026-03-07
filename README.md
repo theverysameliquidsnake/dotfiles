@@ -30,7 +30,7 @@ My [Arch Linux](https://archlinux.org) setup
   - [thunar](https://wiki.archlinux.org/title/Thunar)
 * Text editors:
   - [Neovim](https://wiki.archlinux.org/title/Neovim)
-  - [VS Code](https://wiki.archlinux.org/title/Visual_Studio_Code)
+  - [VSCodium](https://wiki.archlinux.org/title/Visual_Studio_Code)
 * Dev:
   - [go](https://wiki.archlinux.org/title/Go)
   - [node.js](https://wiki.archlinux.org/title/Node.js)
@@ -244,7 +244,7 @@ pacman -S ttf-fira-sans ttf-firacode-nerd ttf-liberation noto-fonts　noto-fonts
 pacman -S firefox
 
 # File managers
-pacman -S yazi thunar
+pacman -S lf thunar
 
 # Media
 pacman -S mpv nicotine+
@@ -380,6 +380,9 @@ sudo timedatectl set-ntp true
 
 # Create standard folders
 xdg-user-dirs-update
+
+# Config yomitan and dictionaries
+firefox
 ```
 
 ### AUR
@@ -393,7 +396,7 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak visual-studio-code-bin brave-bin vesktop
+yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak vscodium brave-bin vesktop
 
 # Enable cpufreq
 sudo systemctl enable auto-cpufreq
@@ -409,4 +412,5 @@ sudo pacman -S flatpak flatseal
 # Install bottles and fightcade
 flatpak install flathub com.usebottles.bottles
 flatpak install flathub com.fightcade.Fightcade
+flatpak install flathub com.heroicgameslauncher.hgl
 ```
