@@ -316,7 +316,7 @@ pacman -S ly
 systemctl enable ly
 
 # Compositor
-pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper hyprshot qt5-wayland qt6-wayland
+pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper qt5-wayland qt6-wayland
 ```
 
 ### Swap
