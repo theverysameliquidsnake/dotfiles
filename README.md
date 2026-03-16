@@ -262,7 +262,7 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S sudo btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks bat ffmpeg ffmpegthumbs
+pacman -S sudo btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks bat ffmpeg ffmpegthumbnailer
 ```
 
 ### Mkinitcpio
