@@ -1,4 +1,7 @@
-# dotfiles (WIP)
+# dotfiles
+
+> [!WARNING]
+> WIP
 
 My [Arch Linux](https://archlinux.org) setup
 
