@@ -23,6 +23,7 @@ My [Arch Linux](https://archlinux.org) setup
 * Display manager:
   - [ly](https://wiki.archlinux.org/title/Ly)
 * Compositor / Window Manager:
+  - [niri](https://wiki.archlinux.org/title/Niri)
   - [hyprland](https://wiki.archlinux.org/title/Hyprland)
 * Launcher:
   - [wofi](https://hg.sr.ht/~scoopta/wofi)
@@ -318,7 +319,10 @@ systemctl enable fstrim.timer
 pacman -S ly
 systemctl enable ly
 
-# Compositor
+# If Niri
+pacman -S niri kitty mako wofi xdg-desktop-portal-gtk xdg-desktop-portal-gnome waybar swaybg swayidle swaylock xwayland-satellite
+
+# If Hyprland
 pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper qt5-wayland qt6-wayland
 ```
 
