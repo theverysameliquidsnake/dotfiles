@@ -23,8 +23,7 @@ My [Arch Linux](https://archlinux.org) setup
 * Display manager:
   - [ly](https://wiki.archlinux.org/title/Ly)
 * Compositor / Window Manager:
-  - [niri](https://wiki.archlinux.org/title/Niri)
-  - [hyprland](https://wiki.archlinux.org/title/Hyprland)
+  - [niri](https://wiki.archlinux.org/title/Niri) or [hyprland](https://wiki.archlinux.org/title/Hyprland)
 * Launcher:
   - [wofi](https://hg.sr.ht/~scoopta/wofi)
 * Notifications:
@@ -33,8 +32,7 @@ My [Arch Linux](https://archlinux.org) setup
   - [lf](https://wiki.archlinux.org/title/Lf)
   - [thunar](https://wiki.archlinux.org/title/Thunar)
 * Text editors:
-  - [Neovim](https://wiki.archlinux.org/title/Neovim)
-  - [VSCodium](https://wiki.archlinux.org/title/Visual_Studio_Code)
+  - [Neovim](https://wiki.archlinux.org/title/Neovim) + [LazyVim](https://www.lazyvim.org) or [VSCodium](https://wiki.archlinux.org/title/Visual_Studio_Code)
 * Dev:
   - [go](https://wiki.archlinux.org/title/Go)
   - [node.js](https://wiki.archlinux.org/title/Node.js)
@@ -141,7 +139,7 @@ mount /dev/nvme0n1p1 /mnt/boot/efi
 reflector -c <country> -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Core packages
-pacstrap -K /mnt base linux-zen linux-zen-headers dkms linux-firmware intel-ucode neovim
+pacstrap -K /mnt base linux-zen linux-zen-headers dkms linux-firmware sof-firmware intel-ucode neovim
 ```
 
 ### Fstab
@@ -182,6 +180,11 @@ locale-gen
 # LC_TIME=en_GB.UTF-8
 touch /etc/locale.conf
 nvim /etc/locale.conf
+
+# Set console layout
+# KEYMAP=us
+touch /etc/vconsole.conf
+nvim /etc/vconsole.conf
 ```
 
 ### Hostname
@@ -214,6 +217,7 @@ useradd -m -g users -G wheel <username>
 passwd <username>
 
 # Add user to sudo group
+pacman -S sudo
 echo "<username> ALL=(ALL) ALL" >> /etc/sudoers.d/<username>
 ```
 
@@ -230,16 +234,16 @@ pacman -S networkmanager reflector openssh
 pacman -S bluez bluez-utils
 
 # Audio
-pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavucontrol
 
 # Power
 pacman -S acpi acpid thermald
 
 # Power (optional and probably conflict if configured wrong)
-pacman -S tlp tlp-rdw
+# pacman -S tlp tlp-rdw
 
 # Graphics
-pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver lib32-intel-media-driver libva-utils
+pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver libva-utils
 
 #Fonts
 pacman -S ttf-fira-sans ttf-firacode-nerd ttf-liberation noto-fonts　noto-fonts-emoji noto-fonts-cjk
@@ -254,7 +258,7 @@ pacman -S lf thunar
 pacman -S mpv nicotine+
 
 # Messenger
-pacman -S telegram
+pacman -S telegram-desktop
 
 # Dev
 pacman -S go nodejs npm podman
@@ -266,7 +270,7 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S sudo btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks bat ffmpeg ffmpegthumbnailer
+pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks bat ffmpeg ffmpegthumbnailer
 ```
 
 ### Mkinitcpio
@@ -289,17 +293,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### Firewall
-
-```Zsh
-# Minimal firewall config
-pacman -S ufw
-ufw default deny incoming
-ufw default allow outgoing
-ufw enable
-systemctl enable ufw
-```
-
 ### Services
 
 ```Zsh
@@ -312,18 +305,19 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 ```
 
-### GUI
+### Compositor
 
 ```Zsh
 # Display manager
 pacman -S ly
-systemctl enable ly
+systemctl enable ly@tty1.service
+systemctl disable getty@tty1.service
 
-# If Niri
+# Niri
 pacman -S niri kitty mako wofi xdg-desktop-portal-gtk xdg-desktop-portal-gnome polkit-gnome waybar swaybg swayidle swaylock xwayland-satellite
 
-# If Hyprland
-pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper qt5-wayland qt6-wayland
+# Hyprland
+# pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper qt5-wayland qt6-wayland
 ```
 
 ### Swap
@@ -347,29 +341,6 @@ nvim /etc/systemd/zram-generator.conf
 pacman -S fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-mozc
 ```
 
-### Snapper
-
-```Zsh
-# Install cronie and snapper
-pacman -S snapper
-
-# Create snapper config file for root volume
-snapper -c root create-config /
-
-# Edit snapshot numbers:
-# TIMELINE_MIN_AGE="1800"
-# TIMELINE_LIMIT_HOURLY="5"
-# TIMELINE_LIMIT_DAILY="7"
-# TIMELINE_LIMIT_WEEKLY="0"
-# TIMELINE_LIMIT_MONTHLY="0"
-# TIMELINE_LIMIT_YEARLY="0"
-nvim /etc/snapper/configs/root
-
-# Start services
-systemctl enable snapper-timeline.timer
-systemctl enable snapper-cleanup.timer
-```
-
 ### Exit chroot
 
 ```Zsh
@@ -390,6 +361,54 @@ xdg-user-dirs-update
 
 # Config yomitan and dictionaries
 firefox
+```
+
+### Firewall
+
+```Zsh
+# Minimal firewall config
+pacman -S ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+sudo systemctl enable ufw
+```
+
+### Snapper
+
+```Zsh
+# Install cronie and snapper
+sudo pacman -S snapper
+
+# Create snapper config file for root volume
+sudo snapper -c root create-config /
+
+# Edit snapshot numbers:
+# TIMELINE_MIN_AGE="1800"
+# TIMELINE_LIMIT_HOURLY="5"
+# TIMELINE_LIMIT_DAILY="7"
+# TIMELINE_LIMIT_WEEKLY="0"
+# TIMELINE_LIMIT_MONTHLY="0"
+# TIMELINE_LIMIT_YEARLY="0"
+sudo nvim /etc/snapper/configs/root
+
+# Start services
+sudo systemctl enable snapper-timeline.timer
+sudo systemctl enable snapper-cleanup.timer
+```
+
+### Post
+
+>Run from main account
+```
+# Install LazyVim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+nvim
+
+# Check health
+# :LazyHealth
+nvim
 ```
 
 ### AUR
