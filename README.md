@@ -400,7 +400,7 @@ sudo systemctl enable snapper-cleanup.timer
 ### Post
 
 >Run from main account
-```
+```Zsh
 # Install LazyVim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
