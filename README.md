@@ -270,7 +270,7 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks bat ffmpeg ffmpegthumbnailer
+pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer
 ```
 
 ### Mkinitcpio
@@ -422,7 +422,7 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S auto-cpufreq ttf-kanjistrokeorders sunsetr yaak vscodium brave-bin vesktop
+yay -S auto-cpufreq ttf-kanjistrokeorders pistol-git sunsetr yaak vscodium brave-bin vesktop
 
 # Enable cpufreq
 sudo systemctl enable auto-cpufreq

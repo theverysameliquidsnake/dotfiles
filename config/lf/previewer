@@ -11,17 +11,16 @@ h="$3"
 x="$4"
 y="$5"
 
-case "$(file -Lb --mime-type "$file")" in 
-    image/*)
-        draw "$file"
-        ;;
-    video/*)
-        thumbnail="$(mktemp --suffix=.jpg)"
-        trap 'rm -f "$thumbnail"' EXIT
-        ffmpegthumbnailer -i "$file" -o "$thumbnail" -s 0
-        draw "$thumbnail"
-        ;;
-    *)
-        bat --style=plain --paging=never "$file"
-        ;;
+case "$(file -Lb --mime-type "$file")" in
+image/*)
+    draw "$file"
+    ;;
+video/*)
+    thumbnail="$(mktemp --suffix=.jpg)"
+    trap 'rm -f "$thumbnail"' EXIT
+    ffmpegthumbnailer -i "$file" -o "$thumbnail" -s 0
+    draw "$thumbnail"
+    ;;
 esac
+
+pistol "$file"
