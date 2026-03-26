@@ -1,0 +1,6 @@
+width=500
+height=700
+always_parse_args=true
+print_command=true
+layer=overlay
+prompt=
