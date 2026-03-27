@@ -270,7 +270,7 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer
+pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer btop wl-clipboard
 ```
 
 ### Mkinitcpio
