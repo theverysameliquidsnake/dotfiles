@@ -73,6 +73,11 @@ workspace "1" {}
 workspace "2" {}
 workspace "3" {}
 workspace "4" {}
+workspace "5" {}
+workspace "6" {}
+workspace "7" {}
+workspace "8" {}
+workspace "9" {}
 
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
@@ -276,6 +281,7 @@ layout {
 spawn-at-startup "mako"
 spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-i" "/home/liquid/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "swayidle" "-w" "timeout" "600" "swaylock -f" "timeout" "900" "niri msg action power-off-monitors" "before-sleep" "swaylock -f"
 spawn-at-startup "sunsetr"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -371,7 +377,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun" "-i" "-a"; }
+    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun" "--insensitive" "--no-actions"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
