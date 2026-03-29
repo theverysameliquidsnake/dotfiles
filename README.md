@@ -29,8 +29,7 @@ My [Arch Linux](https://archlinux.org) setup
 * Notifications:
   - [mako](https://github.com/emersion/mako)
 * File managers:
-  - [lf](https://wiki.archlinux.org/title/Lf)
-  - [thunar](https://wiki.archlinux.org/title/Thunar)
+  - [lf](https://wiki.archlinux.org/title/Lf) and [thunar](https://wiki.archlinux.org/title/Thunar) for drag-and-drop
 * Text editors:
   - [Neovim](https://wiki.archlinux.org/title/Neovim) + [LazyVim](https://www.lazyvim.org) or [VSCodium](https://wiki.archlinux.org/title/Visual_Studio_Code)
 * Dev:
