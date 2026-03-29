@@ -409,6 +409,9 @@ nvim
 # Check health
 # :LazyHealth
 nvim
+
+# Change shell to zsh
+sudo chsh -l /usr/bin/zsh
 ```
 
 ### AUR
