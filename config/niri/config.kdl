@@ -280,7 +280,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "mako"
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-i" "/home/liquid/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "swayidle" "-w" "timeout" "600" "swaylock -f" "timeout" "900" "niri msg action power-off-monitors" "before-sleep" "swaylock -f"
 spawn-at-startup "sunsetr"
 
