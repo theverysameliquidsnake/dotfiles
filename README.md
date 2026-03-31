@@ -1,6 +1,6 @@
 # dotfiles
 
-My [Arch Linux](https://archlinux.org) setup
+My [Arch Linux](https://archlinux.org) Thinkpad setup
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7f5b12dd-b7b3-4fff-9af8-d1286158da53" />
 
@@ -22,15 +22,17 @@ My [Arch Linux](https://archlinux.org) setup
 * Display manager:
   - [ly](https://wiki.archlinux.org/title/Ly)
 * Compositor / Window Manager:
-  - [niri](https://wiki.archlinux.org/title/Niri) or [hyprland](https://wiki.archlinux.org/title/Hyprland)
+  - [niri](https://wiki.archlinux.org/title/Niri)
 * Launcher:
   - [wofi](https://hg.sr.ht/~scoopta/wofi)
 * Notifications:
   - [mako](https://github.com/emersion/mako)
 * File managers:
-  - [lf](https://wiki.archlinux.org/title/Lf) and [thunar](https://wiki.archlinux.org/title/Thunar) for drag-and-drop
-* Text editors:
-  - [Neovim](https://wiki.archlinux.org/title/Neovim) + [LazyVim](https://www.lazyvim.org) or [VSCodium](https://wiki.archlinux.org/title/Visual_Studio_Code)
+  - [lf](https://wiki.archlinux.org/title/Lf)
+  - [thunar](https://wiki.archlinux.org/title/Thunar) for drag-and-drop
+* Text editor:
+  - [Neovim](https://wiki.archlinux.org/title/Neovim)
+  - [LazyVim](https://www.lazyvim.org)
 * Dev:
   - [go](https://wiki.archlinux.org/title/Go)
   - [node.js](https://wiki.archlinux.org/title/Node.js)
@@ -70,14 +72,13 @@ My [Arch Linux](https://archlinux.org) setup
   - [anki](https://wiki.archlinux.org/title/Anki)
   - [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)
   - [btop](https://github.com/aristocratos/btop)
-  - [intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
   - [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)
   - [qBittorrent](https://wiki.archlinux.org/title/QBittorrent)
   - [reflector](https://wiki.archlinux.org/title/Reflector)
   - [snapper](https://wiki.archlinux.org/title/Snapper)
   - [thermald](https://wiki.archlinux.org/title/CPU_frequency_scaling)
   - [ufw](https://wiki.archlinux.org/title/Uncomplicated_Firewall)
-  - [yaak](https://github.com/mountain-loop/yaak)
   - [zram](https://wiki.archlinux.org/title/Zram)
 
 ## Installation
@@ -176,12 +177,10 @@ locale-gen
 # Create and edit locale conf:
 # LANG=en_US.UTF-8
 # LC_TIME=en_GB.UTF-8
-touch /etc/locale.conf
 nvim /etc/locale.conf
 
 # Set console layout
 # KEYMAP=us
-touch /etc/vconsole.conf
 nvim /etc/vconsole.conf
 ```
 
@@ -237,9 +236,6 @@ pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavuco
 # Power
 pacman -S acpi acpid thermald
 
-# Power (optional and probably conflict if configured wrong)
-# pacman -S tlp tlp-rdw
-
 # Graphics
 pacman -S mesa lib32-mesa vulcan-intel lib32-vulcan-intel intel-media-driver libva-utils
 
@@ -268,10 +264,10 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer btop wl-clipboard
+pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer btop grim slurp wl-clipboard
 ```
 
-### Mkinitcpio
+### Kernel modules
 
 ```Zsh
 # Edit /etc/mkinitcpio.conf:
@@ -313,9 +309,6 @@ systemctl disable getty@tty1.service
 
 # Niri
 pacman -S niri kitty mako wofi xdg-desktop-portal-gtk xdg-desktop-portal-gnome polkit-gnome waybar swaybg swayidle swaylock xwayland-satellite
-
-# Hyprland
-# pacman -S hyprland kitty mako wofi xdg-desktop-portal-hyprland hyprpolkitagent waybar hyprpaper qt5-wayland qt6-wayland
 ```
 
 ### Swap
@@ -328,7 +321,6 @@ pacman -S zram-generator
 # [zram0]
 # zram-size = 4096
 # compression-algorithm = zstd
-touch /etc/systemd/zram-generator.conf
 nvim /etc/systemd/zram-generator.conf
 ```
 
@@ -354,15 +346,13 @@ reboot
 # Misc
 sudo timedatectl set-ntp true
 
-# Create standard folders
-xdg-user-dirs-update
-
 # Config yomitan and dictionaries
 firefox
 ```
 
 ### Firewall
 
+>Run from main account
 ```Zsh
 # Minimal firewall config
 pacman -S ufw
@@ -374,6 +364,7 @@ sudo systemctl enable ufw
 
 ### Snapper
 
+>Run from main account
 ```Zsh
 # Install cronie and snapper
 sudo pacman -S snapper
@@ -423,7 +414,7 @@ cd yay
 makepkg -si
 
 # Install packages from AUR
-yay -S auto-cpufreq ttf-kanjistrokeorders pistol-git sunsetr yaak vscodium brave-bin vesktop
+yay -S auto-cpufreq ttf-kanjistrokeorders pistol-git sunsetr brave-bin vesktop
 
 # Enable cpufreq
 sudo systemctl enable auto-cpufreq
@@ -439,5 +430,4 @@ sudo pacman -S flatpak flatseal
 # Install bottles and fightcade
 flatpak install flathub com.usebottles.bottles
 flatpak install flathub com.fightcade.Fightcade
-flatpak install flathub com.heroicgameslauncher.hgl
 ```
