@@ -2,6 +2,8 @@
 
 My [Arch Linux](https://archlinux.org) setup
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7f5b12dd-b7b3-4fff-9af8-d1286158da53" />
+
 ## Packages used
 
 * Kernel:
