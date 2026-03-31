@@ -17,10 +17,10 @@ My [Arch Linux](https://archlinux.org) Thinkpad setup
   - [starship](https://starship.rs)
 * Terminal:
   - [kitty](https://wiki.archlinux.org/title/Kitty)
-* Bar:
-  - [waybar](https://github.com/Alexays/Waybar)
 * Display manager:
   - [ly](https://wiki.archlinux.org/title/Ly)
+* Bar:
+  - [waybar](https://github.com/Alexays/Waybar)
 * Compositor / Window Manager:
   - [niri](https://wiki.archlinux.org/title/Niri)
 * Launcher:
@@ -35,6 +35,7 @@ My [Arch Linux](https://archlinux.org) Thinkpad setup
   - [LazyVim](https://www.lazyvim.org)
 * Dev:
   - [go](https://wiki.archlinux.org/title/Go)
+  - [c](https://wiki.archlinux.org/title/GNU_Compiler_Collection)
   - [node.js](https://wiki.archlinux.org/title/Node.js)
   - [npm](https://wiki.archlinux.org/title/Node.js)
   - [podman](https://wiki.archlinux.org/title/Podman)
@@ -46,6 +47,7 @@ My [Arch Linux](https://archlinux.org) Thinkpad setup
   - [nicotine+](https://github.com/Nicotine-Plus/nicotine-plus)
 * Games:
   - [Steam](https://wiki.archlinux.org/title/Steam)
+  - [Fightcade](https://www.fightcade.com)
 * Messengers:
   - [telegram](https://wiki.archlinux.org/title/Telegram)
   - [vesktop](https://wiki.archlinux.org/title/Discord)
