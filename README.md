@@ -266,7 +266,7 @@ pacman -S steam
 pacman -S man-db man-pages texinfo
 
 # Other
-pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer btop grim slurp wl-clipboard
+pacman -S brightnessctl btrfs-progs xdg-user-dirs fastfetch qbittorrent tor torsocks ffmpeg ffmpegthumbnailer btop grim slurp wl-clipboard unzip unrar 7zip
 ```
 
 ### Kernel modules
