@@ -45,6 +45,7 @@ My [Arch Linux](https://archlinux.org) Thinkpad setup
 * Media:
   - [mpv](https://wiki.archlinux.org/title/Mpv)
   - [nicotine+](https://github.com/Nicotine-Plus/nicotine-plus)
+  - [zathura](https://pwmt.org/projects/zathura)
 * Games:
   - [Steam](https://wiki.archlinux.org/title/Steam)
   - [Fightcade](https://www.fightcade.com)
@@ -251,7 +252,7 @@ pacman -S firefox
 pacman -S lf thunar
 
 # Media
-pacman -S mpv nicotine+
+pacman -S mpv nicotine+ zathura zathura-cb
 
 # Messenger
 pacman -S telegram-desktop
