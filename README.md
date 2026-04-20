@@ -45,7 +45,7 @@ My [Arch Linux](https://archlinux.org) Thinkpad setup
 * Media:
   - [mpv](https://wiki.archlinux.org/title/Mpv)
   - [nicotine+](https://github.com/Nicotine-Plus/nicotine-plus)
-  - [zathura](https://pwmt.org/projects/zathura)
+  - [zathura](https://wiki.archlinux.org/title/Zathura)
 * Games:
   - [Steam](https://wiki.archlinux.org/title/Steam)
   - [Fightcade](https://www.fightcade.com)
